@@ -3,6 +3,7 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+const Menu = electron.Menu
 
 const path = require('path')
 const url = require('url')
@@ -32,6 +33,20 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  const t = [
+    {
+      label: 'My Menu',
+      submenu: [
+	{
+	  label: 'Toggle Me!',
+	  type: 'checkbox'
+	}
+      ]
+    }
+  ]
+  const m = Menu.buildFromTemplate(t)
+  Menu.setApplicationMenu(m)
 }
 
 // This method will be called when Electron has finished
